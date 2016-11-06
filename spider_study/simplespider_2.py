@@ -24,8 +24,8 @@ class Database(object):
     try:
       client = redis.StrictRedis( host =self.ip, port=self.port)
       client.mset(self.write_pool)
-	  keys = client.keys()
-	  print(keys)
+      keys = client.keys()
+      print(keys)
     except Exception as exception:
       print(exception)
 
