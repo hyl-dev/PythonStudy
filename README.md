@@ -15,4 +15,5 @@ __slots__ = [ "__s", "__parser", "__sheet_refs", "__xcall_refs"]
 
  simplespider_2 using Python3.5 ,and spider the movie data of douban choosing 10 different types' movie,then save the data to  redis ,and the key is movie_title,and the value is  ranking number.
 
+simplespider_3 example using Python3.5, BeautifulSoup and lxml  so that get the https://knewone.com/ data.
 
