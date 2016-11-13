@@ -12,7 +12,7 @@ def get_links_from( page ):
     for link in soup.select('td.t a.t'):
         link_url = link.get('href').split('?')[0]
         # delete the jump url
-        if 'http://jump.zhineng.58.com' in temp_url:
+        if 'http://jump.zhineng.58.com' in link_url:
             continue
         urls.append(link_url)
     return urls
@@ -38,20 +38,20 @@ def get_views_from(url):
         return  views
     return 0
 
-def get_item_info(page = 1):
-    
-    urls = get_links_from(page)
-    for url in urls:
-        wb_data = requests.get(url)
-        soup = BeautifulSoup(wb_data.text,'lxml')
-        data = {
-            'title':soup.title.text,
-            'price':soup.select('.price')[0].text if len(soup.find_all('span','price')) > 0 else 0,
-            'area' :list(soup.select('.c_25d')[0].stripped_strings) if soup.find_all('span','c_25d') else None,
-            'date' :soup.select('.time')[0].text ,
-            'views':get_views_from(url)
-        }
-        print(data)
-
+def get_item_info(start_page , end_page):
+    for one in range( start_page , end_page):
+        urls = get_links_from(one)
+        for url in urls:
+            wb_data = requests.get(url)
+            soup = BeautifulSoup(wb_data.text,'lxml')
+            data = {
+                'title':soup.title.text,
+                'price':soup.select('.price')[0].text if len(soup.find_all('span','price')) > 0 else 0,
+                'area' :list(soup.select('.c_25d')[0].stripped_strings) if soup.find_all('span','c_25d') else None,
+                'date' :soup.select('.time')[0].text ,
+                'views':get_views_from(url)
+            }
+            print(data)
+            
 if __name__ == '__main__':
-    get_item_info(3)
+        get_item_info(1,5)
