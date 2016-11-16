@@ -17,3 +17,7 @@ __slots__ = [ "__s", "__parser", "__sheet_refs", "__xcall_refs"]
 
 simplespider_3 example using Python3.5, BeautifulSoup and lxml  so that get the https://knewone.com/ data.
 
+simplespider_4 and simplespider_5  examples using Python3.5, BeautifulSoup and lxml so that get the 58 tongcheng data ,and save the data to MongoDB，simplespider_5 spider the zhuanzhuan data.
+
+
+
